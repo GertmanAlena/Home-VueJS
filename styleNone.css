@@ -1,0 +1,6 @@
+@charset "UTF-8";
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}/*# sourceMappingURL=styleNone.css.map */
