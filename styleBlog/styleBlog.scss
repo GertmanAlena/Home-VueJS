@@ -1,0 +1,174 @@
+@import '../vars';
+@import '../mixins';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Jost", sans-serif;
+}
+
+.bannerBlog{
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    &__content{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: column;
+        padding: 41px 78px;
+        border-radius: 37px 37px 0px 0px;
+        background: rgb(255, 255, 255);
+        &-title{
+            color: rgb(41, 47, 54);
+            font-family: DM Serif Display;
+            font-size: 50px;
+            font-weight: 400;
+            line-height: 125%;
+            letter-spacing: 0%;
+            text-align: left;
+        }
+        &-link{
+            color: rgb(77, 80, 83);
+            font-family: Jost;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 150%;
+            letter-spacing: 1%;
+            text-align: left;
+        }
+    }
+}
+
+.post{
+    @include centerCalc($widthSite);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 200px;
+
+    &__title-box{
+        padding-bottom: 27px;
+        .post__title{
+            color: rgb(41, 47, 54);
+            font-family: DM Serif Display;
+            font-size: 50px;
+            font-weight: 400;
+            line-height: 125%;
+            letter-spacing: 2%;
+            text-align: left;
+        }
+    }
+    .border{
+        box-sizing: border-box;
+        border: 1px solid rgb(231, 231, 231);
+        border-radius: 62px;
+        box-shadow: 0px 10px 30px 0px rgba(255, 255, 255, 0.25);
+        margin-bottom: 150px;
+    }
+    &__content{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 22px;
+        gap: 65px;
+        
+        .post__discriptions-title{
+            color: rgb(41, 47, 54);
+            font-family: DM Serif Display;
+            font-size: 25px;
+            font-weight: 400;
+            line-height: 125%;
+            letter-spacing: 2%;
+            text-align: left;
+            padding-bottom: 22px;
+        }
+        .post__discriptions-text{
+            color: rgb(77, 80, 83);
+            font-family: Jost;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 150%;
+            letter-spacing: 1%;
+            text-align: left;
+
+            margin: 22px 0px;
+            position: static;
+            width: 469px;
+            height: 198px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 0px;
+        }
+        .post__content .post__discriptions-text {
+            color: rgb(77, 80, 83);
+            font-family: Jost;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 150%;
+            text-align: left;
+        }
+    }
+
+    &__data{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        &-btn{
+            background: rgb(244, 240, 236);
+            width: 52px;
+            height: 52px;
+            border-radius: 50px 50px 50px 50px;
+            .btn-svg{
+                padding: 18px;
+                padding-left: 24px;
+            }
+        }
+    }
+ 
+}
+
+.articles__news-products{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    .product{
+        width: 385px;
+    }
+}
+.buttonsPages{
+    display: flex;
+    gap: 20px;
+    @include paddingTopBottom(50px, 200px);
+    .btn-data{
+        background: rgb(244, 240, 236);
+        border-radius: 50px 50px 50px 50px;
+        padding: 14px;
+
+        color: rgb(41, 47, 54);
+        font-family: Jost;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 150%;
+        letter-spacing: 0%;
+        text-align: left;
+        text-transform: capitalize;
+        .btn-svg{
+            padding-left: 8px;
+            padding-right: 5px;
+            padding-top: 3px;
+        }
+    }
+    .btn-data:hover {
+        background: white;
+    }
+}

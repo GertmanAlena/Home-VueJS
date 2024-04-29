@@ -2,3 +2,7 @@
     padding-left: calc(50% - $width/2);
     padding-right: calc(50% - $width/2);
 }
+@mixin paddingTopBottom($top, $bottom) {
+    padding-top: $top;
+    padding-bottom: $bottom;
+}
