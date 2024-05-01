@@ -48,13 +48,6 @@ new Vue({
                 data: '26 December,2022',
             }
         ],
-    className: [
-        {
-            articles__news: 'articles__news',
-            heading: 'heading'
-        }
-
-    ]
 }
 });
 

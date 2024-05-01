@@ -77,11 +77,11 @@
     </div>
 
     <article class="articles__news center"id="app" >
-        <div class="heading">
+        <div class="heading" >
             <h2 class="heading__title">{{ title }}</h2>
         </div>
         <div class="articles__news-products">
-            <button class="product" v-for="article in articles" :key="article.id">
+            <button class="product" v-for="article in articles">
                 <p class="product__stick"> {{ article.stick }} </p>
                 <img class="product__image" :src="article.image" alt="articles first photo">
                 <p class="product-title">{{ article.title }} </p>
