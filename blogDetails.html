@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./styleIndex/style.css">
     <link rel="stylesheet" href="./styleAll/styleAll.css">
-    <link rel="stylesheet" href="./blogDetailsStyle/blogDetails.scss">
+    <link rel="stylesheet" href="./blogDetailsStyle/blogDetails.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Jost:ital@0;1&display=swap');
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="blogDetails.js"></script>
 </head>
+
 <body>
     <div class="index center">
         <div class="header">
@@ -20,12 +25,153 @@
             </div>
 
             <div class="header__menubar">
-                <a class="active" href="#">Home</a>
-                <a class="active" href="#">Project</a>
-                <a class="active" href="#">Blog</a>
+                <a class="active" href="index.html">Home</a>
+                <a class="active" href="blog.html">Project</a>
+                <a class="active" href="blogDetails.html">Blog</a>
             </div>
         </div>
     </div>
-    
+
+    <div class="bannerBlog">
+        <img src="./images/Image_laceholder.png" alt="banner__image">
+    </div>
+
+    <section id="app" class="section-article index">
+        <main class="main-article">
+            <article-component v-for="article in articles" :article="article"></article-component>
+
+            <article class="advertisement">
+                <p class="advertisement__logo">“</p>
+                <p class="advertisement__text">The details are not the details.
+                    They make the design.</p>
+            </article>
+
+            <article-all-component v-for="kitchen in kitchens"
+                :kitchen="kitchen"></article-all-component>
+            <!-- <all-bedrooms v-if="bedrooms" v-for="bedroom in bedrooms"
+            :bedroom="bedroom"></all-bedrooms> -->
+        </main>
+        <div class="sort-article">
+            <h1 class="sort-article__title">Tags</h1>
+            <div class="sort-article__buttons">
+                <sort-buttons v-for="button in buttons" :button="button"></sort-buttons>
+            </div>
+            
+        </div>
+    </section>
+
+    <div class="footer index">
+        <div class="footer__logo">
+            <div class="header__name">
+                <img class="image_logo" src="./images/Logo.png" alt="logo">
+                <p class="logo__text">Interno</p>
+
+            </div>
+            <p class="description">It is a long established fact that a reader will be distracted lookings.</p>
+            <div class="icons">
+                <a class="icon-twit" href="#">
+                    <svg width="18.000000" height="15.000000" viewBox="0 0 18 15" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path id=""
+                            d="M17.46 1.44C16.97 2.18 16.33 2.81 15.63 3.34L15.63 3.83C15.63 8.72 11.94 14.31 5.16 14.31C3.05 14.31 1.11 13.71 -0.5 12.66C-0.22 12.69 0.06 12.73 0.37 12.73C2.1 12.73 3.68 12.13 4.94 11.14C3.33 11.11 1.96 10.05 1.5 8.58C1.75 8.61 1.96 8.65 2.2 8.65C2.52 8.65 2.87 8.58 3.15 8.51C1.46 8.16 0.2 6.68 0.2 4.89L0.2 4.85C0.69 5.13 1.29 5.27 1.89 5.31C0.87 4.64 0.23 3.51 0.23 2.25C0.23 1.55 0.41 0.91 0.73 0.39C2.55 2.6 5.3 4.08 8.35 4.25Q8.25 3.83 8.25 3.41C8.25 1.37 9.9 -0.28 11.94 -0.28C13 -0.28 13.94 0.14 14.65 0.88C15.46 0.7 16.26 0.39 16.97 -0.04C16.69 0.84 16.12 1.55 15.35 2C16.09 1.93 16.83 1.72 17.46 1.44Z"
+                            fill="#292F36" fill-opacity="1.000000" fill-rule="evenodd" />
+                    </svg>
+                </a>
+                <a class="icon-in" href="#">
+                    <svg width="16.000000" height="15.000000" viewBox="0 0 16 15" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path id=""
+                            d="M3.38 0.89C3.38 1.95 2.54 2.83 1.48 2.83C0.46 2.83 -0.38 1.95 -0.38 0.89C-0.38 -0.13 0.46 -0.97 1.48 -0.97C2.54 -0.97 3.38 -0.13 3.38 0.89ZM15.37 14.75L12.1 14.75L12.1 9.65C12.1 8.42 12.07 6.87 10.38 6.87C8.69 6.87 8.44 8.17 8.44 9.54L8.44 14.75L5.17 14.75L5.17 4.23L8.3 4.23L8.3 5.67L8.34 5.67C8.8 4.87 9.85 3.99 11.43 3.99C14.74 3.99 15.37 6.17 15.37 8.98L15.37 14.75ZM3.14 4.23L3.14 14.75L-0.13 14.75L-0.13 4.23L3.14 4.23Z"
+                            fill="#292F36" fill-opacity="1.000000" fill-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer__pages">
+            <h3 class="pages__title">Pages</h3>
+            <a class="active" href="#">Home</a>
+            <a class="active" href="#">Project</a>
+            <a class="active" href="#">Blog</a>
+        </div>
+
+        <div class="footer__contact">
+            <h3 class="contact__title">Contact</h3>
+            <p class="contact__text">55 East Birchwood Ave. Brooklyn, New York 11201</p>
+            <p class="contact__text">contact@interno.com</p>
+            <p class="contact__text">(123) 456 - 7890</p>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                articles: [
+                    {
+                        id: 'kitchen',
+                        title: 'Let’s Get Solution for Building Construction Work',
+                        image: './images/articleBlog1.png',
+                        page: 'Interior / Home / Decore',
+                        data: '26 December,2022',
+                        description: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injecthumour, or randomised words which don`t look even slightly believable. Embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.',
+
+                    }
+                ],
+                kitchens: [
+                    {
+                        id: 1,
+                        title: 'Design sprints are great',
+                        text: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.',
+                        items: [
+                            { id: 1, text: 'Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.' },
+                            { id: 2, text: 'Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.'},
+                            { id: 3, text: 'Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.'},
+                        ],
+                        image: "./images/kitchen.png",
+                        imageText: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.'
+                    }
+                ],
+                bedrooms: [
+                    {
+                        id: 1,
+                        title: 'Bedroom sprints are great',
+                        text: 'Bedroom ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.',
+                        items: [
+                            { id: 1, text: 'Bedroom to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.' },
+                            { id: 2, text: 'Bedroom to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.'},
+                            { id: 3, text: 'Bedroom to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.'},
+                        ],
+                        image: "",
+                        imageText: 'Bedroom ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.'
+                    },
+                    {
+                        id: 2,
+                        title: 'Second Bedroom sprints are great',
+                        text: 'Bedroom ipsum dolor sit amet, adipiscing.',
+                        items: [
+                            { id: 1, text: 'Contrary.' },
+                            { id: 2, text: 'Contrary to.'},
+                            { id: 3, text: 'Contrary to popular belief.'},
+                        ],
+                        image: "",
+                        imageText: 'Bedroom ipsum dolor sit amet.'
+                    }
+                ],
+                buttons:['Kitchen', 'Bedroom', 'Building', 'Architecture', 'Kitchen Planning', 'Bedroom',]
+            }
+            
+            // {
+            //     id: 'architecture',
+            //     title: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem modi iure iusto autem quaerat? Numquam consequuntur tempora expedita modi ullam!',
+            //     image: './images/arh.png',
+            //     page: 'Interior / Home / Architecture',
+            //     data: '26 December,2022',
+            //     description: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations.'
+            // },
+        });
+    </script>
+
 </body>
+
 </html>
