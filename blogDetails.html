@@ -46,18 +46,17 @@
                     They make the design.</p>
             </article>
 
-            <article-all-component v-for="kitchen in kitchens"
-                :kitchen="kitchen"></article-all-component>
-            <!-- <all-bedrooms v-if="bedrooms" v-for="bedroom in bedrooms"
-            :bedroom="bedroom"></all-bedrooms> -->
+            <article-all-component v-for="t in filteredArticle"
+                :t="t"></article-all-component>
         </main>
         <div class="sort-article">
-            <h1 class="sort-article__title">Tags</h1>
+            <h2 class="sort-article__title">Tags</h2>
             <div class="sort-article__buttons">
-                <sort-buttons v-for="button in buttons" :button="button"></sort-buttons>
+                <sort-buttons v-for="(button, index) in buttons" :button="button" @click="onClickTag(index)"></sort-buttons>
             </div>
             
         </div>
+
     </section>
 
     <div class="footer index">
@@ -107,6 +106,7 @@
         new Vue({
             el: '#app',
             data: {
+                activeIndex: 0,
                 articles: [
                     {
                         id: 'kitchen',
@@ -118,9 +118,10 @@
 
                     }
                 ],
-                kitchens: [
+                tags: [
                     {
                         id: 1,
+                        tag: 'Kitchen',
                         title: 'Design sprints are great',
                         text: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.',
                         items: [
@@ -130,11 +131,10 @@
                         ],
                         image: "./images/kitchen.png",
                         imageText: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.'
-                    }
-                ],
-                bedrooms: [
+                    },
                     {
-                        id: 1,
+                        id: 2,
+                        tag: 'Bedroom',
                         title: 'Bedroom sprints are great',
                         text: 'Bedroom ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations of passages of Lorem Ipsum available, but the majority have suffered.',
                         items: [
@@ -147,6 +147,7 @@
                     },
                     {
                         id: 2,
+                        tag: 'Bedrooms',
                         title: 'Second Bedroom sprints are great',
                         text: 'Bedroom ipsum dolor sit amet, adipiscing.',
                         items: [
@@ -158,17 +159,33 @@
                         imageText: 'Bedroom ipsum dolor sit amet.'
                     }
                 ],
-                buttons:['Kitchen', 'Bedroom', 'Building', 'Architecture', 'Kitchen Planning', 'Bedroom',]
-            }
-            
-            // {
-            //     id: 'architecture',
-            //     title: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem modi iure iusto autem quaerat? Numquam consequuntur tempora expedita modi ullam!',
-            //     image: './images/arh.png',
-            //     page: 'Interior / Home / Architecture',
-            //     data: '26 December,2022',
-            //     description: 'Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpmaximus.posuere in.Contrary to popular belief.There are many variations.'
-            // },
+
+                buttons:['Kitchen', 'Bedroom', 'Building', 'Architecture', 'Kitchen Planning', 'Bedroom',],
+                tagsName: [
+                    { title: 'Kitchen' },
+                    { title: 'Bedroom' },
+                    { title: 'Building' },
+                    { title: 'Architecture' },
+                    { title: 'Kitchen Planning' },
+                    { title: 'Bedroom' }
+                ]
+            },
+            methods: {
+                onClickTag(index) {
+                    if (this.activeIndex === index) {
+                        this.activeIndex = 0;
+                    } else {
+                        this.activeIndex = index;
+                    }
+                },
+                
+            },
+            computed: {
+                filteredArticle() {
+                    return this.tags.filter(tg => tg.tag.includes(this.tagsName[this.activeIndex].title));
+
+                }
+            },
         });
     </script>
 
